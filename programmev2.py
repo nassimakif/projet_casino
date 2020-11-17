@@ -32,10 +32,7 @@ while level < 4:
             while levelaffichage != level and level != 4 : 
                 level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelaffichage) + " ou 4 ! "))
         elif level == 3:
-            print("\t4 - Sortir")
-            level = int(input("Que voulez-vous faire : "))
-            while level != 4: 
-                level = int(input("Réponse incorect, veuillez saisir le choix 4 ! "))
+            level = 4;
     else:
         print("\n\n Vous avez perdu au niveau " + str(level))
         print("\t" + str(level) + " - Pour recommencer au level " + str(level))
