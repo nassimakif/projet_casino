@@ -88,6 +88,7 @@ while level < 4:
         #Résultat
         if nb_user == "erreur":
             print("Vous avez perdu ! Mon nombre est " + str(nb_python) + " !")
+            print("Il vous reste " + str(argent-mise) + "€");
         else:
             #Calcul montant gagne
             if nb_coup == 1:
@@ -96,6 +97,6 @@ while level < 4:
                 argent = argent + mise
             elif nb_coup == 3:
                 argent = argent + (mise/2)
-            print("Bingo René, vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez emporté " + str(argent) + "€ !")
+            print("Bingo René, vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez emporté " + str(mise) + "€ !")
     else:
-        print("Au revoir ! Vous finissez la partie avec " + str(mise) + " €")
+        print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
