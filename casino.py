@@ -16,7 +16,7 @@
 # 	* Vous pouvez les personnaliser en soulignant les mots-d'intérêt et en adaptant un jeu de couleur suivant le type de message (perte / gain)
 
 # 	* Proposer au joueur si il veut bien afficher les régles du jeu ?\n      
-#print("Voulez-vous afficher les regles du jeu ? (O/N)")
+print("Voulez-vous afficher les regles du jeu ? (O/N)")
 
 
 #

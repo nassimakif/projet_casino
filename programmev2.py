@@ -18,19 +18,34 @@ while level < 4:
     if nb_user != "erreur":
         if level == 0:
             print("\t1 - Level 1")
-            print("\t4 - Sortir");
+            print("\t4 - Sortir")
+            level = int(input("Que voulez-vous faire : "))
+            while level != 1 and level != 4: 
+                level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
         elif level < 4:
-            print("\n\n Super ! Vous passez au Level " + str(level+1));
-            print("\t" + str(level+1) + " - Pour passer au level " + str(level+1))
-            print("\t4 - Sortir");
+            level+=1
+            print("\n\n Super ! Vous passez au Level " + str(level))
+            print("\t" + str(level) + " - Pour passer au level " + str(level))
+            print("\t4 - Sortir")
+            levelaffichage = 1
+            level = int(input("Que voulez-vous faire : "))
+            print("level affichage : " + levelaffichage)
+            while levelaffichage != level and level != 4 : 
+                level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelaffichage) + " ou 4 ! "))
         elif level == 4:
-            print("\t4 - Sortir");
-        level = int(input("Que voulez-vous faire : "))
+            print("\t4 - Sortir")
+            level = int(input("Que voulez-vous faire : "))
+            while level != 4: 
+                level = int(input("Réponse incorect, veuillez saisir le choix 4 ! "))
     else:
         print("\n\n Vous avez perdu au niveau " + str(level))
         print("\t" + str(level) + " - Pour recommencer au level " + str(level))
         print("\t4 - Sortir")
         level = int(input("Que voulez-vous faire : "))
+        if level != 4: 
+            argent = int(input("Vous avez tout perdu. Combien voulez-vous remettre ? : "))
+
+        
 
     if level < 4:
         if level == 1:
@@ -70,7 +85,7 @@ while level < 4:
         #Nombre mystère
         nb_user = int(input("\n\nAlors mon nombre est : "))
         nb_user = checkSaisiNombre(nb_user, max)
-        nb_coup = 1;
+        nb_coup = 1
         while nb_user != nb_python or nb_user == "erreur":
             if nb_user < nb_python:
                 nb_user = int(input("\nVotre nbre est trop petit ! \n Alors mon nombre est : "))
@@ -78,26 +93,28 @@ while level < 4:
             if nb_user > nb_python:
                 nb_user = int(input("\nVotre nbre est trop grand ! \n Alors mon nombre est : "))
                 nb_user = checkSaisiNombre(nb_user, max)
-            nb_coup += 1;
+            nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
                 print("\nIl vous reste une chance !")
             if nb_coup == nb_essai and nb_user != nb_python:
                 nb_user = "erreur"
-                break;
+                break
 
         #Résultat
         if nb_user == "erreur":
             print("Vous avez perdu ! Mon nombre est " + str(nb_python) + " !")
-            print("Il vous reste " + str(argent-mise) + "€");
+            print("Il vous reste " + str(argent-mise) + "€")
         else:
             #Calcul montant gagne
+            print("Bingo " + name_user + ", vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez misé " + str(mise) + "€ !")
             if nb_coup == 1:
                 argent = argent + (mise * 2)
             elif nb_coup == 2:
                 argent = argent + mise
             elif nb_coup == 3:
                 argent = argent + (mise/2)
-            print("Bingo René, vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez emporté " + str(mise) + "€ !")
-        
+            print("Vous avez au total : " + str(argent) +"€")
+            print("Vous avez gagné " + str(argent-mise) +"€")
+           
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
