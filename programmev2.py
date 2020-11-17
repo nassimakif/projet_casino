@@ -22,17 +22,16 @@ while level < 4:
             level = int(input("Que voulez-vous faire : "))
             while level != 1 and level != 4: 
                 level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
-        elif level < 4:
+        elif level < 3:
             level+=1
             print("\n\n Super ! Vous passez au Level " + str(level))
             print("\t" + str(level) + " - Pour passer au level " + str(level))
             print("\t4 - Sortir")
-            levelaffichage = 1
+            levelaffichage = level
             level = int(input("Que voulez-vous faire : "))
-            print("level affichage : " + levelaffichage)
             while levelaffichage != level and level != 4 : 
                 level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelaffichage) + " ou 4 ! "))
-        elif level == 4:
+        elif level == 3:
             print("\t4 - Sortir")
             level = int(input("Que voulez-vous faire : "))
             while level != 4: 
@@ -44,8 +43,6 @@ while level < 4:
         level = int(input("Que voulez-vous faire : "))
         if level != 4: 
             argent = int(input("Vous avez tout perdu. Combien voulez-vous remettre ? : "))
-
-        
 
     if level < 4:
         if level == 1:
