@@ -65,7 +65,7 @@ while level < 4:
             
         while mise < 1 or mise > argent:
             print("Erreur, votre mise est plus elevé que votre solde.")
-            mise = int(input("Entrer SVP un montant entre 1 et " + argent + " € : "))
+            mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
 
         #Nombre mystère
         nb_user = int(input("\n\nAlors mon nombre est : "))
@@ -98,5 +98,6 @@ while level < 4:
             elif nb_coup == 3:
                 argent = argent + (mise/2)
             print("Bingo René, vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez emporté " + str(mise) + "€ !")
+        
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
