@@ -9,8 +9,8 @@ def checkSaisiNombre(nb_user, max):
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
-print("Hello " + name_user + ", vous avez 10 €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
-argent = 10
+argent = int(input("Combien voulez-vous mettre : "))
+print("Hello " + name_user + ", vous avez " + str(argent) + " €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
 level = 0
 nb_user = 0
 
