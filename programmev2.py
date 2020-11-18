@@ -122,7 +122,7 @@ while level < 4:
                 nb_user = "erreur"
                 break
 
-        #Résultat
+        #Resultat
         if nb_user == "erreur":
             print("Vous avez perdu ! Mon nombre est " + str(nb_python) + " !")
             print("Il vous reste " + str(argent-mise) + "€")
