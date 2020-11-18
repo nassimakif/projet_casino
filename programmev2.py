@@ -2,8 +2,8 @@
 from random import *
 import sys
 import select
-from os import path
 import os.path
+from os import path
 
 class TimeoutExpired(Exception):
     pass
