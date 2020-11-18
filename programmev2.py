@@ -10,7 +10,7 @@ from inputimeout import inputimeout, TimeoutOccurred
 def checkSaisiNombre(nb_user, max):
     while nb_user < 1 or nb_user > int(max):
         try:
-            nb_user = inputimeout(prompt='Je ne comprends pas ! Entrer SVP un nombre entre 1 et '+ str(max) + ':' , timeout=10)
+            nb_user = inputimeout(prompt='(10 secondes pour répondre) Je ne comprends pas ! Entrer SVP un nombre entre 1 et '+ str(max) + ':' , timeout=10)
         except TimeoutOccurred:
             print("Vous n'avez pas répondu assez vite")
     return nb_user
@@ -89,7 +89,7 @@ while level < 4:
 
         #Nombre mystère
         try:
-            nb_user = inputimeout(prompt='\n\nAlors mon nombre est : ', timeout=10)
+            nb_user = inputimeout(prompt='(10 secondes pour répondre) \n\nAlors mon nombre est : ', timeout=10)
         except TimeoutOccurred:
             print("Vous n'avez pas répondu assez vite")
         nb_user = checkSaisiNombre(int(nb_user), max)
@@ -97,13 +97,13 @@ while level < 4:
         while nb_user != nb_python or nb_user == "erreur":
             if nb_user < nb_python:
                 try:
-                    nb_user = inputimeout(prompt='\nVotre nbre est trop petit ! \n Alors mon nombre est : ', timeout=10)
+                    nb_user = inputimeout(prompt=' (10 secondes pour répondre)  \nVotre nbre est trop petit ! \n Alors mon nombre est : ', timeout=10)
                 except TimeoutOccurred:
                     print("Vous n'avez pas répondu assez vite")
                 nb_user = checkSaisiNombre(int(nb_user), max)
             if nb_user > nb_python:
                 try:
-                    nb_user = inputimeout(prompt='\nVotre nbre est trop grand ! \n Alors mon nombre est : ', timeout=10)
+                    nb_user = inputimeout(prompt='(10 secondes pour répondre) \nVotre nbre est trop grand ! \n Alors mon nombre est : ', timeout=10)
                 except TimeoutOccurred:
                     print("Vous n'avez pas répondu assez vite")
                 nb_user = checkSaisiNombre(int(nb_user), max)
