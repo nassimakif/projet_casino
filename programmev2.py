@@ -1,11 +1,24 @@
 #Module
 from random import *
+import sys
+import select
+
+class TimeoutExpired(Exception):
+    pass
 
 #Fonction
 def checkSaisiNombre(nb_user, max):
     while nb_user < 1 or nb_user > max:
         nb_user = int(input("Je ne comprends pas ! Entrer SVP un nombre entre 1 et 10 : "))
     return nb_user
+
+def input_with_timeout(prompt, timeout):
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+    ready, _, _ = select.select([sys.stdin], [], [], timeout)
+    if ready:
+        return sys.stdin.readline().rstrip('\n')  # expect stdin to be line-buffered
+    raise TimeoutExpired
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -32,7 +45,7 @@ while level < 4:
             while levelaffichage != level and level != 4 : 
                 level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelaffichage) + " ou 4 ! "))
         elif level == 3:
-            level = 4;
+            level = 4
     else:
         print("\n\n Vous avez perdu au niveau " + str(level))
         print("\t" + str(level) + " - Pour recommencer au level " + str(level))
@@ -77,15 +90,21 @@ while level < 4:
             mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
 
         #Nombre mystère
-        nb_user = int(input("\n\nAlors mon nombre est : "))
+        #nb_user = int(input("\n\nAlors mon nombre est : "))
+        try:
+            nb_user = int(input(input_with_timeout("\n\nAlors mon nombre est : ", 10)))
+        except TimeoutExpired:
+            print('XYZ test 123') #pour le moment pour voir si ça fonctionne.
         nb_user = checkSaisiNombre(nb_user, max)
         nb_coup = 1
         while nb_user != nb_python or nb_user == "erreur":
             if nb_user < nb_python:
-                nb_user = int(input("\nVotre nbre est trop petit ! \n Alors mon nombre est : "))
+                nb_user = int(input_with_timeout("\nVotre nbre est trop petit ! \n Alors mon nombre est : ", 10))
+                #nb_user = int(input("\nVotre nbre est trop petit ! \n Alors mon nombre est : "))
                 nb_user = checkSaisiNombre(nb_user, max)
             if nb_user > nb_python:
-                nb_user = int(input("\nVotre nbre est trop grand ! \n Alors mon nombre est : "))
+                nb_user = int(input_with_timeout("\nVotre nbre est trop grand ! \n Alors mon nombre est : ", 10))
+                #nb_user = int(input("\nVotre nbre est trop grand ! \n Alors mon nombre est : "))
                 nb_user = checkSaisiNombre(nb_user, max)
             nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
