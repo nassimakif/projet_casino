@@ -187,7 +187,7 @@ while level < 4:
            
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
-        print("Votre meilleur gain est " + str(meilleureGain()) )
-        print("Votre meilleur mise est " + str( meilleureMise()))
-        print("Votre pire gain est " + str(pireGain()))
-        print("Votre pire mise est " + str(pireMise()))
+        print("Votre meilleur gain est " + str(meilleureGain())  + " €" )
+        print("Votre meilleur mise est " + str( meilleureMise())  + " €")
+        print("Votre pire gain est " + str(pireGain())  + " €")
+        print("Votre pire mise est " + str(pireMise()) + " €")
