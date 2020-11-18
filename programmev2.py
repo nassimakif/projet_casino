@@ -70,20 +70,21 @@ while level < 4:
             max = 30
             nb_essai = 7
 
-        #Génération nombre
+        #Generation nombre
         nb_python = randint(1, max)
         print("Nombre mystere = " + str(nb_python))
 
-        #Régle
-        regles = input("Voulez-vous voir les règles ? o ou n")
-        if regles == 'o' or 'O':
+        #Regle
+        regles = input("Voulez-vous voir les règles ? \n o ou n\n")
+        if regles == 'o' or regles == 'O':
             rules()
-        elif regles == 'n' or 'N':
-            continue
+            
+        elif regles == 'n' or regles =='N':
+            print("Bonne chance à vous... ne pas lire les règles peut être préjudiciable....")
         else:
             print("Je n'ai pas compris votre input")
         print("\n\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAtt : vous avez le droit à trois essais !")
-
+        
         #Montant de la mise
         if level == 1:
             mise = int(input("\n\nLe jeu commence, entrez votre mise : "))
@@ -94,7 +95,7 @@ while level < 4:
             print("Erreur, votre mise est plus elevé que votre solde.")
             mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
 
-        #Nombre mystère
+        #Nombre mystere
         try:
             nb_user = inputimeout(prompt='(10 secondes pour répondre) \n\nAlors mon nombre est : ', timeout=10)
         except TimeoutOccurred:
