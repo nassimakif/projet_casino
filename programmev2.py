@@ -76,30 +76,33 @@ def niveau_perdu(level):
     level = int(input("Que voulez-vous faire : "))
     return level
 
-def MeilleureStats():
-    mise = 0
+def meilleureGain():
     argent = 0
     gain_max = argent
+    if gain_max > argent:
+        gain_max = gain_max
+    return gain_max
+
+def meilleureMise():
+    mise = 0
     mise_max = mise
     if mise_max > mise:
         mise_max = mise_max
-    if gain_max > argent:
-        gain_max = gain_max
-    
-    return gain_max, mise_max
+    return mise_max
 
-
-def PireStats():
+def pireMise():
     mise = 0
+    pire_mise = mise
+    if pire_mise < mise:
+        pire_mise = pire_mise
+    return pire_mise
+
+def pireGain():
     argent = 0
-    gain_pire = argent
-    mise_pire = mise
-    if mise_pire < mise:
-        mise_pire = mise_pire
-    if gain_pire < argent:
-        gain_pire = gain_pire
-    
-    return gain_pire, mise_pire
+    pire_gain = argent
+    if pire_gain > argent:
+        pire_gain = pire_gain
+    return pire_gain
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -184,5 +187,7 @@ while level < 4:
            
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
-        MeilleureStats()
-        PireStats()
+        print("Votre meilleur gain est " + str(meilleureGain()) )
+        print("Votre meilleur mise est " + str( meilleureMise()))
+        print("Votre pire gain est " + str(pireGain()))
+        print("Votre pire mise est " + str(pireMise()))
