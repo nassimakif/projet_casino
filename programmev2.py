@@ -24,6 +24,31 @@ def rules():
     print("\t- de quitter le jeu")
     print("Dès que vous devinez mon nombre : vous avez le droit de quitter le jeu et de partir avec vos gains OU de continuer le jeu en passant au level supérieur.")
 
+def MeilleureStats():
+    mise = 0
+    argent = 0
+    gain_max = argent
+    mise_max = mise
+    if mise_max > mise:
+        mise_max = mise_max
+    if gain_max > argent:
+        gain_max = gain_max
+    
+    return gain_max, mise_max
+
+
+def PireStats():
+    mise = 0
+    argent = 0
+    gain_pire = argent
+    mise_pire = mise
+    if mise_pire < mise:
+        mise_pire = mise_pire
+    if gain_pire < argent:
+        gain_pire = gain_pire
+    
+    return gain_pire, mise_pire
+
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
 argent = int(input("Combien voulez-vous mettre : "))
@@ -140,3 +165,5 @@ while level < 4:
            
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
+        MeilleureStats()
+        PireStats()
