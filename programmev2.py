@@ -4,33 +4,16 @@ import sys
 import select
 import os.path
 from os import path
-
-class TimeoutExpired(Exception):
-    pass
+from inputimeout import inputimeout, TimeoutOccurred
 
 #Fonction
 def checkSaisiNombre(nb_user, max):
-    while nb_user < 1 or nb_user > max:
-        nb_user = int(input("Je ne comprends pas ! Entrer SVP un nombre entre 1 et 10 : "))
+    while nb_user < 1 or nb_user > int(max):
+        try:
+            nb_user = inputimeout(prompt='Je ne comprends pas ! Entrer SVP un nombre entre 1 et '+ str(max) + ':' , timeout=10)
+        except TimeoutOccurred:
+            print("Vous n'avez pas répondu assez vite")
     return nb_user
-
-def input_with_timeout(prompt, timeout):
-    sys.stdout.write(prompt)
-    sys.stdout.flush()
-    ready, _, _ = select.select([sys.stdin], [], [], timeout)
-    if sys.platform == 'win32':
-        output += os.read(fd, block_size)
-    elif ready:
-        return sys.stdin.readline().rstrip('\n')  # expect stdin to be line-buffered
-    raise TimeoutExpired
-
-#def input_with_timeout(prompt, timeout):
-#   sys.stdout.write(prompt)
-#    sys.stdout.flush()
-#    ready, _, _ = select.select([sys.stdin], [], [], timeout)
-#    if ready:
-#        return sys.stdin.readline().rstrip('\n')  # expect stdin to be line-buffered
-#    raise TimeoutExpired
 
 
 #Saisie de début
@@ -105,22 +88,25 @@ while level < 4:
             mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
 
         #Nombre mystère
-        #nb_user = int(input("\n\nAlors mon nombre est : "))
         try:
-            nb_user = int(input(input_with_timeout("\n\nAlors mon nombre est : ", 10)))
-        except TimeoutExpired:
-            print('XYZ test 123') #pour le moment pour voir si ça fonctionne.
-        nb_user = checkSaisiNombre(nb_user, max)
+            nb_user = inputimeout(prompt='\n\nAlors mon nombre est : ', timeout=10)
+        except TimeoutOccurred:
+            print("Vous n'avez pas répondu assez vite")
+        nb_user = checkSaisiNombre(int(nb_user), max)
         nb_coup = 1
         while nb_user != nb_python or nb_user == "erreur":
             if nb_user < nb_python:
-                nb_user = int(input_with_timeout("\nVotre nbre est trop petit ! \n Alors mon nombre est : ", 10))
-                #nb_user = int(input("\nVotre nbre est trop petit ! \n Alors mon nombre est : "))
-                nb_user = checkSaisiNombre(nb_user, max)
+                try:
+                    nb_user = inputimeout(prompt='\nVotre nbre est trop petit ! \n Alors mon nombre est : ', timeout=10)
+                except TimeoutOccurred:
+                    print("Vous n'avez pas répondu assez vite")
+                nb_user = checkSaisiNombre(int(nb_user), max)
             if nb_user > nb_python:
-                nb_user = int(input_with_timeout("\nVotre nbre est trop grand ! \n Alors mon nombre est : ", 10))
-                #nb_user = int(input("\nVotre nbre est trop grand ! \n Alors mon nombre est : "))
-                nb_user = checkSaisiNombre(nb_user, max)
+                try:
+                    nb_user = inputimeout(prompt='\nVotre nbre est trop grand ! \n Alors mon nombre est : ', timeout=10)
+                except TimeoutOccurred:
+                    print("Vous n'avez pas répondu assez vite")
+                nb_user = checkSaisiNombre(int(nb_user), max)
             nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
                 print("\nIl vous reste une chance !")
