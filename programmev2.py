@@ -27,7 +27,7 @@ def rules():
     else:
         print("Je n'ai pas compris votre input")
 
-def mise(argent):
+def fonction_mise(argent):
     if level == 1:
         mise = int(input("\n\nLe jeu commence, entrez votre mise : "))
     else:
@@ -36,6 +36,17 @@ def mise(argent):
         print("Erreur, votre mise est plus elevé que votre solde.")
         mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
     return mise
+
+def check_trouver_nombre(texte, nb_user, max):
+    try:
+        if nb_user != 0:
+            print("\n" + str(texte))
+        nb_user = inputimeout(prompt=' (10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
+    except TimeoutOccurred:
+        print("Vous n'avez pas répondu assez vite")
+    if nb_user != 0:
+        nb_user = checkSaisiNombre(int(nb_user), max)
+    return int(nb_user)
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -92,7 +103,7 @@ while level < 4:
         print("\n\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAtt : vous avez le droit à " + str(nb_essai) + " essais !")
         
         #Montant de la mise
-        mise = mise(argent)
+        mise = fonction_mise(argent)
 
         #Nombre mystere
         try:
@@ -102,25 +113,11 @@ while level < 4:
         if nb_user != 0:
             nb_user = checkSaisiNombre(int(nb_user), max)
         nb_coup = 1
-        while nb_user != nb_python or nb_user == "erreur":
-            if nb_user < nb_python:
-                try:
-                    if nb_user != 0:
-                        print("\nVotre nombre est trop petit !")
-                    nb_user = inputimeout(prompt=' (10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
-                except TimeoutOccurred:
-                    print("Vous n'avez pas répondu assez vite")
-                if nb_user != 0:
-                    nb_user = checkSaisiNombre(int(nb_user), max)
-            if nb_user > nb_python:
-                try:
-                    if nb_user != 0:
-                        print("\nVotre nombre est trop grand !")
-                    nb_user = inputimeout(prompt='(10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
-                except TimeoutOccurred:
-                    print("Vous n'avez pas répondu assez vite")
-                if nb_user != 0:
-                    nb_user = checkSaisiNombre(int(nb_user), max)
+        while int(nb_user) != nb_python or int(nb_user) == "erreur":
+            if int(nb_user) < nb_python:
+                nb_user = check_trouver_nombre("Votre nombre est trop petit !", int(nb_user), max)
+            if int(nb_user) > nb_python:
+                nb_user = check_trouver_nombre("Votre nombre est trop grand !", int(nb_user), max)
             nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
                 print("\nIl vous reste une chance !")
