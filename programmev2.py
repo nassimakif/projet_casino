@@ -6,15 +6,23 @@ import os.path
 from os import path
 from inputimeout import inputimeout, TimeoutOccurred
 
-#Fonction
+#Fonctions
 def checkSaisiNombre(nb_user, max):
-    while nb_user < 1 or nb_user > int(max):
+    while int(nb_user) < 1 or int(nb_user) > int(max):
         try:
-            nb_user = inputimeout(prompt='(10 secondes pour répondre) Je ne comprends pas ! Entrer SVP un nombre entre 1 et '+ str(max) + ':' , timeout=10)
+            nb_user = int(inputimeout(prompt='(10 secondes pour répondre) Je ne comprends pas ! Entrer SVP un nombre entre 1 et '+ str(max) + ':' , timeout=10))
         except TimeoutOccurred:
             print("Vous n'avez pas répondu assez vite")
     return nb_user
 
+def rules():
+    print("Si vous devinez mon nombre dès le premier coup, vous gagnez le double de votre mise !")
+    print("Si vous le devinez au 2è coup, vous gagnez exactement votre mise !")
+    print("Si vous le devinez au 3è coup, vous gagnez la moitiè votre mise !")
+    print("Si vous ne le devinez pas au 3è coup, vous perdez votre mise et \nVous avez le droit :")
+    print("\t- de retenter votre chance avec l'argent qu'il vous reste pour reconquérir le level perdu")
+    print("\t- de quitter le jeu")
+    print("Dès que vous devinez mon nombre : vous avez le droit de quitter le jeu et de partir avec vos gains OU de continuer le jeu en passant au level supérieur.")
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -67,15 +75,14 @@ while level < 4:
         print("Nombre mystere = " + str(nb_python))
 
         #Régle
+        regles = input("Voulez-vous voir les règles ? o ou n")
+        if regles == 'o' or 'O':
+            rules()
+        elif regles == 'n' or 'N':
+            continue
+        else:
+            print("Je n'ai pas compris votre input")
         print("\n\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAtt : vous avez le droit à trois essais !")
-        if level == 1:
-            print("Si vous devinez mon nombre dès le premier coup, vous gagnez le double de votre mise !")
-            print("Si vous le devinez au 2è coup, vous gagnez exactement votre mise !")
-            print("Si vous le devinez au 3è coup, vous gagnez la moitiè votre mise !")
-            print("Si vous ne le devinez pas au 3è coup, vous perdez votre mise et \nVous avez le droit :")
-            print("\t- de retenter votre chance avec l'argent qu'il vous reste pour reconquérir le level perdu")
-            print("\t- de quitter le jeu")
-            print("Dès que vous devinez mon nombre : vous avez le droit de quitter le jeu et de partir avec vos gains OU de continuer le jeu en passant au level supérieur.")
 
         #Montant de la mise
         if level == 1:
