@@ -41,12 +41,40 @@ def check_trouver_nombre(texte, nb_user, max):
     try:
         if nb_user != 0:
             print("\n" + str(texte))
-        nb_user = inputimeout(prompt=' (10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
+        nb_user = inputimeout(prompt=' \n (10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
     except TimeoutOccurred:
         print("Vous n'avez pas répondu assez vite")
     if nb_user != 0:
         nb_user = checkSaisiNombre(int(nb_user), max)
     return int(nb_user)
+
+def permier_level(level):
+    print("\t1 - Level 1")
+    print("\t4 - Sortir")
+    level = int(input("Que voulez-vous faire : "))
+    while level != 1 and level != 4: 
+        level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
+    return level
+
+def passage_level_superieur(level):
+    level+=1
+    print("\n\n Super ! Vous passez au Level " + str(level))
+    print("\t" + str(level) + " - Pour passer au level " + str(level))
+    print("\t4 - Sortir")
+    levelprecedent = level
+    level = int(input("Que voulez-vous faire : "))
+    while levelprecedent != level and level != 4 : 
+        level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelprecedent) + " ou 4 ! "))
+    return level
+
+def niveau_perdu(level):
+    print("\n\n Vous avez perdu au niveau " + str(level))
+    if level != 1:
+        level = level - 1
+    print("\t" + str(level) + " - Pour recommencer au level " + str(level))
+    print("\t4 - Sortir")
+    level = int(input("Que voulez-vous faire : "))
+    return level
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -58,28 +86,13 @@ nb_user = 0
 while level < 4:
     if nb_user != "erreur":
         if level == 0:
-            print("\t1 - Level 1")
-            print("\t4 - Sortir")
-            level = int(input("Que voulez-vous faire : "))
-            while level != 1 and level != 4: 
-                level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
+            level = permier_level(level)
         elif level < 3:
-            level+=1
-            print("\n\n Super ! Vous passez au Level " + str(level))
-            print("\t" + str(level) + " - Pour passer au level " + str(level))
-            print("\t4 - Sortir")
-            levelprecedent = level
-            level = int(input("Que voulez-vous faire : "))
-            while levelprecedent != level and level != 4 : 
-                level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelprecedent) + " ou 4 ! "))
+            level = passage_level_superieur(level)
         elif level == 3:
             level = 4
     else:
-        print("\n\n Vous avez perdu au niveau " + str(level))
-        level = level - 1
-        print("\t" + str(level) + " - Pour recommencer au level " + str(level))
-        print("\t4 - Sortir")
-        level = int(input("Que voulez-vous faire : "))
+        level = niveau_perdu(level)
         if level != 4 and argent == 0: 
             argent = int(input("Vous avez tout perdu. Combien voulez-vous remettre ? : "))
 
