@@ -6,8 +6,11 @@ from inputimeout import inputimeout, TimeoutOccurred
 import json
 from json.decoder import JSONDecodeError
 from datetime import datetime
+from rules import Rules
 
 #Fonctions
+
+# Vérifie la saisie de l'utilisateur en fonction du temps qu'il dispose pour répondre et de son choix
 def checkSaisiNombre(nb_user, max):
     while int(nb_user) < 1 or int(nb_user) > int(max):
         try:
@@ -16,21 +19,7 @@ def checkSaisiNombre(nb_user, max):
             print("Vous n'avez pas répondu assez vite")
     return nb_user
 
-def rules():
-    regles = input("\nVoulez-vous voir les règles ? (o ou n) : ")
-    if regles == 'o' or regles == 'O':
-        print("Si vous devinez mon nombre dès le premier coup, vous gagnez le double de votre mise !")
-        print("Si vous le devinez au 2è coup, vous gagnez exactement votre mise !")
-        print("Si vous le devinez au 3è coup, vous gagnez la moitiè votre mise !")
-        print("Si vous ne le devinez pas au 3è coup, vous perdez votre mise et \nVous avez le droit :")
-        print("\t- de retenter votre chance avec l'argent qu'il vous reste pour reconquérir le level perdu")
-        print("\t- de quitter le jeu")
-        print("Dès que vous devinez mon nombre : vous avez le droit de quitter le jeu et de partir avec vos gains OU de continuer le jeu en passant au level supérieur.")
-    elif regles == 'n' or regles =='N':
-        print("Bonne chance à vous... ne pas lire les règles peut être préjudiciable....")
-    else:
-        print("Je n'ai pas compris votre input")
-
+# Retourn la mise
 def fonction_mise(argent):
     if level == 1:
         mise = int(input("\nLe jeu commence, entrez votre mise : "))
@@ -41,6 +30,7 @@ def fonction_mise(argent):
         mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
     return mise
 
+# Verifie si le nombre est le bon
 def check_trouver_nombre(texte, nb_user, max):
     try:
         if nb_user != 0:
@@ -52,6 +42,7 @@ def check_trouver_nombre(texte, nb_user, max):
         nb_user = checkSaisiNombre(int(nb_user), max)
     return int(nb_user)
 
+# retourne le level choisi par l'utilisateur à l'entree du programme
 def permier_level(level):
     print("\n----1 - Level 1")
     print("----4 - Sortir")
@@ -60,6 +51,7 @@ def permier_level(level):
         level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
     return level
 
+# retourne le level (superieur) si le joueur gagne
 def passage_level_superieur(level):
     level+=1
     print("\nSuper ! Vous passez au Level " + str(level))
@@ -71,6 +63,7 @@ def passage_level_superieur(level):
         level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelprecedent) + " ou 4 ! "))
     return level
 
+# retourne le level si le joueur perd
 def niveau_perdu(level):
     print("\n\n Vous avez perdu au niveau " + str(level))
     if level != 1:
@@ -80,24 +73,27 @@ def niveau_perdu(level):
     level = int(input("Que voulez-vous faire : "))
     return level
 
+# retourne les meilleures gains (meilleures gains) pour les stats joueurs
 def meilleureGain(gain, meilleure_gain):
     if gain > meilleure_gain:
         return gain
     else:
         return meilleure_gain
 
+# retourne les meilleures mises (meilleures mises) pour les stats joueurs
 def meilleureMise(mise, meilleure_mise):
     if mise > meilleure_mise:
         return mise
     else:
         return meilleure_mise
-
+# retourne les pire mises (mises les plus faibles) pour les stats joueurs
 def pireMise(mise, pire_mise):
     if pire_mise < mise:
         return pire_mise
     else:
         return mise
 
+# retourne les pire gains (gains les plus faibles) pour les stats joueurs
 def pireGain(gain, pire_gain):
     if pire_gain < gain:
         return pire_gain
@@ -154,7 +150,7 @@ while level < 4:
         print("Nombre mystere = " + str(nb_python))
 
         #Regle
-        rules()
+        Rules.rules()
         print("\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAttention : vous avez le droit à " + str(nb_essai) + " essais !")
         
         #Montant de la mise
