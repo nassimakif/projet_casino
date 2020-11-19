@@ -1,7 +1,9 @@
 #Module
 from random import *
 from os import path
+import os.path
 from inputimeout import inputimeout, TimeoutOccurred
+import json
 
 #Fonctions
 def checkSaisiNombre(nb_user, max):
@@ -100,6 +102,17 @@ def pireGain(gain, pire_gain):
     else:
         return gain
 
+def stat(data):
+    if path.exists("stats.json"):
+        try:
+            with open("stats.json","r+") as json_file:
+                try:
+                    data_read = json.load(json_file)
+                    print(data_read)
+                    data_read.append(data)
+        except expression as identifier:
+            pass
+
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
 argent = int(input("Combien voulez-vous mettre : "))
@@ -196,6 +209,17 @@ while level < 4:
         meilleure_mise = meilleureMise(mise, meilleure_mise)
         pire_mise = pireMise(mise, pire_mise)
     else:
+#        stats = {
+#            "pseudo":name_user,
+#            "timestamp":"19/11/2020",
+#            "meilleure gain":[meilleure_gain],
+#            "pire gain": [pire_gain],
+#            "meilleure mise": [meilleure_mise],
+#            "pire mise": [pire_mise]
+#        }
+#        with open("stats.json","a+") as file:
+#            json.dump(stats,file)
+
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
         print("Votre meilleur gain est " + str(meilleure_gain)  + " €" )
         print("Votre meilleur mise est " + str(meilleure_mise)  + " €")
