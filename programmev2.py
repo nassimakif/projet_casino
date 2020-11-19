@@ -221,7 +221,6 @@ while level < 4:
              'pire mise': [pire_mise]
              }
             }
-        print('level = ' + str(level))
         if level == 4:
             with open("stats.json", "r") as file:
                 data_json = json.load(file)
