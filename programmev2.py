@@ -76,33 +76,29 @@ def niveau_perdu(level):
     level = int(input("Que voulez-vous faire : "))
     return level
 
-def meilleureGain():
-    argent = 0
-    gain_max = argent
-    if gain_max > argent:
-        gain_max = gain_max
-    return gain_max
+def meilleureGain(gain, meilleure_gain):
+    if gain > meilleure_gain:
+        return gain
+    else:
+        return meilleure_gain
 
-def meilleureMise():
-    mise = 0
-    mise_max = mise
-    if mise_max > mise:
-        mise_max = mise_max
-    return mise_max
+def meilleureMise(mise, meilleure_mise):
+    if mise > meilleure_mise:
+        return mise
+    else:
+        return meilleure_mise
 
-def pireMise():
-    mise = 0
-    pire_mise = mise
+def pireMise(mise, pire_mise):
     if pire_mise < mise:
-        pire_mise = pire_mise
-    return pire_mise
+        return pire_mise
+    else:
+        return mise
 
-def pireGain():
-    argent = 0
-    pire_gain = argent
-    if pire_gain > argent:
-        pire_gain = pire_gain
-    return pire_gain
+def pireGain(gain, pire_gain):
+    if pire_gain < gain:
+        return pire_gain
+    else:
+        return gain
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -172,22 +168,36 @@ while level < 4:
         #Resultat
         if nb_user == "erreur":
             print("Vous avez perdu ! Mon nombre est " + str(nb_python) + " !")
-            print("Il vous reste " + str(argent-mise) + "€")
+            argent = argent - mise
+            print("Il vous reste " + str(argent) + "€")
         else:
             #Calcul montant gagne
             print("Bingo " + name_user + ", vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez misé " + str(mise) + "€ !")
             if nb_coup == 1:
-                argent = argent + (mise * 2)
+                gain = mise * 2
+                argent = argent + gain
             elif nb_coup == 2:
-                argent = argent + mise
+                gain = mise
+                argent = argent + gain
             elif nb_coup == 3:
-                argent = argent + (mise/2)
+                gain = mise/2
+                argent = argent + gain
             print("Vous avez au total : " + str(argent) +"€")
             print("Vous avez gagné " + str(argent-mise) +"€")
-           
+            if level == 1:
+                meilleure_gain = gain
+                pire_gain = gain
+            meilleure_gain = meilleureGain(gain, meilleure_gain)
+            pire_gain = pireGain(gain, pire_gain)
+
+        if level == 1:
+            meilleure_mise = mise
+            pire_mise = mise
+        meilleure_mise = meilleureMise(mise, meilleure_mise)
+        pire_mise = pireMise(mise, pire_mise)
     else:
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
-        print("Votre meilleur gain est " + str(meilleureGain())  + " €" )
-        print("Votre meilleur mise est " + str( meilleureMise())  + " €")
-        print("Votre pire gain est " + str(pireGain())  + " €")
-        print("Votre pire mise est " + str(pireMise()) + " €")
+        print("Votre meilleur gain est " + str(meilleure_gain)  + " €" )
+        print("Votre meilleur mise est " + str(meilleure_mise)  + " €")
+        print("Votre pire gain est " + str(pire_gain)  + " €")
+        print("Votre pire mise est " + str(pire_mise) + " €")
