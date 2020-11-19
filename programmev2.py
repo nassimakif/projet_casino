@@ -4,9 +4,7 @@ from os import path
 import os.path
 from inputimeout import inputimeout, TimeoutOccurred
 import json
-
-class e:
-    pass
+from json.decoder import JSONDecodeError
 
 #Fonctions
 def checkSaisiNombre(nb_user, max):
