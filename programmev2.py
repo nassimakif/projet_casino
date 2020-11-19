@@ -105,8 +105,8 @@ def pireGain(gain, pire_gain):
         return gain
 
 stat = {
-            "list_pseudo" : []
-        }
+    "list_pseudo" : []
+}
 if not path.exists("stats.json"):
     with open("stats.json", "w") as file:
         json.dump(stat, file)
