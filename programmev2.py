@@ -5,6 +5,9 @@ import os.path
 from inputimeout import inputimeout, TimeoutOccurred
 import json
 
+class e:
+    pass
+
 #Fonctions
 def checkSaisiNombre(nb_user, max):
     while int(nb_user) < 1 or int(nb_user) > int(max):
@@ -110,8 +113,17 @@ def stat(data):
                     data_read = json.load(json_file)
                     print(data_read)
                     data_read.append(data)
-        except expression as identifier:
-            pass
+                    json_file.seek(0)
+                    json.dump(data_read, json_file)
+                except JSONDecodeError as e:
+                    print("Erreur : ", e)
+        except IOError as i:
+            print("Erreur : ", i)
+    else: 
+        with open('stats.json', 'w') as outfile:
+            json.dump(data, outfile)
+    json_file.close()
+
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
@@ -209,16 +221,18 @@ while level < 4:
         meilleure_mise = meilleureMise(mise, meilleure_mise)
         pire_mise = pireMise(mise, pire_mise)
     else:
-#        stats = {
-#            "pseudo":name_user,
-#            "timestamp":"19/11/2020",
-#            "meilleure gain":[meilleure_gain],
-#            "pire gain": [pire_gain],
-#            "meilleure mise": [meilleure_mise],
-#            "pire mise": [pire_mise]
-#        }
-#        with open("stats.json","a+") as file:
-#            json.dump(stats,file)
+        stats = {
+            "pseudo":name_user,
+            "timestamp":"19/11/2020",
+            "meilleure gain":[meilleure_gain],
+            "pire gain": [pire_gain],
+            "meilleure mise": [meilleure_mise],
+            "pire mise": [pire_mise]
+        }
+        with open("stats.json","a+") as file:
+            json.dump(stats,file)
+
+        stat(stats)
 
         print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
         print("Votre meilleur gain est " + str(meilleure_gain)  + " €" )
