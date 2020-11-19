@@ -104,33 +104,6 @@ def pireGain(gain, pire_gain):
     else:
         return gain
 
-#def stat(data):
-#    if path.exists("stats.json"):
-#        try:
-#            with open("stats.json","r+") as json_file:
-#                try:
-#                    data_read = json.load(json_file)
-#                    print(data_read)
-#                    data_read.append(data)
-#                    json_file.seek(0)
-#                    json.dump(data_read, json_file)
-#                except JSONDecodeError as e:
-#                    print("Erreur : ", e)
-#        except IOError as i:
-#            print("Erreur : ", i)
-#    else: 
-#        with open('stats.json', 'w') as outfile:
-#            json.dump(data, outfile)
-#    json_file.close()
-
-def maxValue(list):
-    return max(list)
-
-def timestamp():
-    now = datetime.now()
-    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-    return datetime
-
 stat = {
             "list_pseudo" : []
         }
@@ -145,6 +118,11 @@ argent = int(input("Combien voulez-vous mettre : "))
 print("Hello " + name_user + ", vous avez " + str(argent) + " €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
 level = 0
 nb_user = 0
+start = True
+meilleure_gain = 0
+pire_gain = 0
+meilleure_mise = 0
+pire_mise = 0
 
 while level < 4:
     if nb_user != "erreur":
@@ -154,6 +132,7 @@ while level < 4:
             level = passage_level_superieur(level)
         elif level == 3:
             level = 4
+            start = False
     else:
         level = niveau_perdu(level)
         if level != 4 and argent == 0: 
@@ -235,23 +214,6 @@ while level < 4:
         meilleure_mise = meilleureMise(mise, meilleure_mise)
         pire_mise = pireMise(mise, pire_mise)
     else:
-        if level != 1:
-            meilleure_gain = 0
-            pire_gain = 0
-            meilleure_mise = 0
-            pire_mise = 0
-        #stats = {
-        #    "pseudo":name_user,
-        #    "timestamp":datetime,
-        #    "meilleure gain":[meilleure_gain],
-        #    "pire gain": [pire_gain],
-        #    "meilleure mise": [meilleure_mise],
-        #    "pire mise": [pire_mise]
-        #}
-#        with open("stats.json","a+") as file:
-#            json.dump(stats,file)
-
-#        stats(stats)
         donnees = { name_user : {
              'meilleure gain':[meilleure_gain],
              'pire gain': [pire_gain],
@@ -260,7 +222,7 @@ while level < 4:
              }
             }
         print('level = ' + str(level))
-        if level >= 1 and level <= 3:
+        if level == 4:
             with open("stats.json", "r") as file:
                 data_json = json.load(file)
                 file.close()
@@ -278,9 +240,7 @@ while level < 4:
 
 
             print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
-            print("Votre meilleur gain est " + str(maxValue(data_json[name_user]['meilleure gain']))  + " €" )
-            print("Votre meilleur mise est " + str(maxValue(data_json[name_user]['meilleure mise']))  + " €")
-            print("Votre pire gain est " + str(maxValue(data_json[name_user]['pire gain']))  + " €")
-            print("Votre pire mise est " + str(maxValue(data_json[name_user]['pire mise'])) + " €")
-
-        print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
+            print("Votre meilleur gain est " + str(meilleure_gain)  + " €" )
+            print("Votre meilleur mise est " + str(meilleure_mise)  + " €")
+            print("Votre pire gain est " + str(pire_gain)  + " €")
+            print("Votre pire mise est " + str(pire_mise) + " €")
