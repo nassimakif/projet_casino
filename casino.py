@@ -17,7 +17,7 @@ def checkSaisiNombre(nb_user, max):
     return nb_user
 
 def rules():
-    regles = input("Voulez-vous voir les règles ? (o ou n) : ")
+    regles = input("\nVoulez-vous voir les règles ? (o ou n) : ")
     if regles == 'o' or regles == 'O':
         print("Si vous devinez mon nombre dès le premier coup, vous gagnez le double de votre mise !")
         print("Si vous le devinez au 2è coup, vous gagnez exactement votre mise !")
@@ -33,9 +33,9 @@ def rules():
 
 def fonction_mise(argent):
     if level == 1:
-        mise = int(input("\n\nLe jeu commence, entrez votre mise : "))
+        mise = int(input("\nLe jeu commence, entrez votre mise : "))
     else:
-        mise = int(input("\n\nEntrez votre mise : "))
+        mise = int(input("\nEntrez votre mise : "))
     while mise < 1 or mise > argent:
         print("Erreur, votre mise est plus elevé que votre solde.")
         mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
@@ -45,16 +45,16 @@ def check_trouver_nombre(texte, nb_user, max):
     try:
         if nb_user != 0:
             print("\n" + str(texte))
-        nb_user = inputimeout(prompt=' \n (10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
+        nb_user = inputimeout(prompt='\n(10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
     except TimeoutOccurred:
-        print("Vous n'avez pas répondu assez vite")
+        print("Vous n'avez pas répondu assez vite. Réssayer !")
     if nb_user != 0:
         nb_user = checkSaisiNombre(int(nb_user), max)
     return int(nb_user)
 
 def permier_level(level):
-    print("\t1 - Level 1")
-    print("\t4 - Sortir")
+    print("\n----1 - Level 1")
+    print("----4 - Sortir")
     level = int(input("Que voulez-vous faire : "))
     while level != 1 and level != 4: 
         level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
@@ -62,9 +62,9 @@ def permier_level(level):
 
 def passage_level_superieur(level):
     level+=1
-    print("\n\n Super ! Vous passez au Level " + str(level))
-    print("\t" + str(level) + " - Pour passer au level " + str(level))
-    print("\t4 - Sortir")
+    print("\nSuper ! Vous passez au Level " + str(level))
+    print("\n----" + str(level) + " - Pour passer au level " + str(level))
+    print("----4 - Sortir")
     levelprecedent = level
     level = int(input("Que voulez-vous faire : "))
     while levelprecedent != level and level != 4 : 
@@ -75,8 +75,8 @@ def niveau_perdu(level):
     print("\n\n Vous avez perdu au niveau " + str(level))
     if level != 1:
         level = level - 1
-    print("\t" + str(level) + " - Pour recommencer au level " + str(level))
-    print("\t4 - Sortir")
+    print("----" + str(level) + " - Pour recommencer au level " + str(level))
+    print("----4 - Sortir")
     level = int(input("Que voulez-vous faire : "))
     return level
 
@@ -105,8 +105,8 @@ def pireGain(gain, pire_gain):
         return gain
 
 stat = {
-    "list_pseudo" : []
-}
+            "list_pseudo" : []
+        }
 if not path.exists("stats.json"):
     with open("stats.json", "w") as file:
         json.dump(stat, file)
@@ -114,8 +114,8 @@ if not path.exists("stats.json"):
 
 #Saisie de début
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
-argent = int(input("Combien voulez-vous mettre : "))
-print("Hello " + name_user + ", vous avez " + str(argent) + " €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
+argent = int(input("\nCombien voulez-vous mettre dans le jeu : "))
+print("\nHello " + name_user + ", vous avez " + str(argent) + " €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
 level = 0
 nb_user = 0
 start = True
@@ -136,7 +136,7 @@ while level < 4:
     else:
         level = niveau_perdu(level)
         if level != 4 and argent == 0: 
-            argent = int(input("Vous avez tout perdu. Combien voulez-vous remettre ? : "))
+            argent = int(input("\nVous avez tout perdu. Combien voulez-vous remettre ? : "))
 
     if level < 4:
         if level == 1:
@@ -155,7 +155,7 @@ while level < 4:
 
         #Regle
         rules()
-        print("\n\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAtt : vous avez le droit à " + str(nb_essai) + " essais !")
+        print("\nJe viens de penser à un nombre entre 1 et " + str(max) + ". Devinez lequel ? \nAttention : vous avez le droit à " + str(nb_essai) + " essais !")
         
         #Montant de la mise
         mise = fonction_mise(argent)
@@ -190,7 +190,7 @@ while level < 4:
             print("Il vous reste " + str(argent) + "€")
         else:
             #Calcul montant gagne
-            print("Bingo " + name_user + ", vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez misé " + str(mise) + "€ !")
+            print("\nBingo " + name_user + ", vous avez gagné en " + str(nb_coup) + " coup(s) et vous avez misé " + str(mise) + "€ !")
             if nb_coup == 1:
                 gain = mise * 2
                 argent = argent + gain
@@ -221,6 +221,7 @@ while level < 4:
              'pire mise': [pire_mise]
              }
             }
+        print('level = ' + str(level))
         if level == 4:
             with open("stats.json", "r") as file:
                 data_json = json.load(file)
@@ -236,7 +237,6 @@ while level < 4:
                         data_json["list_pseudo"].append(name_user)
                         data_json.update(donnees)
                         json.dump(data_json, file)
-
 
             print("Au revoir ! Vous finissez la partie avec " + str(argent) + " €")
             print("Votre meilleur gain est " + str(meilleure_gain)  + " €" )
