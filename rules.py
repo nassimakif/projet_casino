@@ -14,3 +14,5 @@ class Rules:
             print("Bonne chance à vous... ne pas lire les règles peut être préjudiciable....")
         else:
             print("Je n'ai pas compris votre input")
+
+    
