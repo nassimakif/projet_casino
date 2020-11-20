@@ -30,8 +30,7 @@ class Check:
 
     # verification saisie utilisateur (int)
     def checkInt(txt):
-        valeur = 0
-        bol = False
+        bol = True
         while bol:
             try:
                 valeur = int(input("\n" + txt))
