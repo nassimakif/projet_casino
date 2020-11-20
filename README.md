@@ -34,7 +34,9 @@ Lorsque vous gagnez un level et/ou terminer une partie, Python fournit des stati
 Quand vous souhaitez quitter le jeu, Python mets en place un compteur jusqu'à 10 secondes pour valider votre décision.
 Au-delà, Python quitte le jeu.
 
-## Captures d'écran
+## Capture d'écran
+
+![Capture](/image/image.png)
 
 ## Fichiers contenus dans le projet
 
