@@ -62,6 +62,8 @@ while level < 4:
         mise = Mise.fonction_mise(argent, level)
 
         #Nombre mystere
+        if nb_user == "erreur":
+            nb_user = 0
         try:
             nb_user = inputimeout(prompt='(10 secondes pour répondre) \n\nAlors mon nombre est : ', timeout=10)
         except TimeoutOccurred:
