@@ -26,7 +26,7 @@ from mise import Mise
 
 Pour lancer le programme casino.py, accédez au répertoire où se trouve le fichier casino.py. Ensuite tapez la commande: python casino.py
 
-## Regle du programme
+## Règles du programme
 
 Le jeu comporte quatre levels. Lors de chaque level, Python tire un nombre : level 1 (entre 1 et 10),level2 (1 et 20), level3 (1 et 30). C'est à vous de deviner le nombre mystérieux avec 3 essais (en tout)lors du 1è level, 5 lors du 2è level et 7 essais lors du 3è level. Chaque essai ne durera pas plus
 de 10 secondes. En dépassant ce délai, vous perdez votre essai.
@@ -34,7 +34,7 @@ Lorsque vous gagnez un level et/ou terminer une partie, Python fournit des stati
 Quand vous souhaitez quitter le jeu, Python mets en place un compteur jusqu'à 10 secondes pour valider votre décision.
 Au-delà, Python quitte le jeu.
 
-## Fichier contenu dans le projet
+## Fichiers contenus dans le projet
 
 Projet Casino.ipynb
 README.md
