@@ -4,7 +4,7 @@ Le projet s'appelle "Python Casino". Il s'agit d'un programme codé en python et
 
 ## Pre-réquis d'installation
 
-Liste des imports natif a python :
+Liste des imports natif à python :
 
 from os import path
 import os.path
@@ -48,11 +48,11 @@ stats.py
 
 ## Livraison et déployement
 
-Un premier livrable fonctionelle est disponible le 20/11/2020. 
+Un premier livrable fonctionnel est disponible le 20/11/2020. 
 
-## Axes d'amelioration
+## Axes d'amélioration
 
-Des axes d'ameliorations avec une librairie telque Pandas pour une affichage de graphique en liens avec notre programme egalement l'utilisation de Numpy pour l'aspect statistque et enfin la possibiliter d'intergrer le programme sur du Web avec Flask
+Des axes d'améliorations avec une librairie tel que Pandas pour un affichage de graphique en lien avec notre programme serait une amélioration possible. Egalement l'utilisation de Numpy pour l'aspect statistiques et enfin la possibilité d'intégrer le programme sur du Web avec Flask.
 
 ## Auteurs
 
