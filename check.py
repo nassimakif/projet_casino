@@ -17,15 +17,13 @@ class Check:
         return nb_user
 
     # Verifie si le nombre est le bon
-    def check_trouver_nombre(texte, nb_user, limiteMaxi):
+    def check_trouver_nombre(texte, nb_user):
         try:
             if nb_user != 0:
                 print("\n" + str(texte))
             nb_user = inputimeout(prompt='\n(10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
         except TimeoutOccurred:
             print("Vous n'avez pas répondu assez vite. Réssayer !")
-#        if nb_user != 0:
-#            nb_user = Check.checkSaisiNombre(int(nb_user), limiteMaxi)
         return int(nb_user)
 
     # verification saisie utilisateur (int)

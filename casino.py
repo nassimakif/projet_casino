@@ -62,6 +62,7 @@ while level < 4:
         mise = Mise.fonction_mise(argent, level)
 
         #Nombre mystere
+        nb_coup = 1
         if nb_user == "erreur":
             nb_user = 0
         try:
@@ -70,12 +71,11 @@ while level < 4:
             print("Vous n'avez pas répondu assez vite")
         if nb_user != 0:
             nb_user = Check.checkSaisiNombre(int(nb_user), limiteMaxi)
-        nb_coup = 1
-        while int(nb_user) != nb_python or int(nb_user) == "erreur":
+        while int(nb_user) != nb_python:
             if int(nb_user) < nb_python:
-                nb_user = Check.check_trouver_nombre("Votre nombre est trop petit !", int(nb_user), limiteMaxi)
+                nb_user = Check.check_trouver_nombre("Votre nombre est trop petit !", int(nb_user))
             if int(nb_user) > nb_python:
-                nb_user = Check.check_trouver_nombre("Votre nombre est trop grand !", int(nb_user), limiteMaxi)
+                nb_user = Check.check_trouver_nombre("Votre nombre est trop grand !", int(nb_user))
             nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
                 print("\nIl vous reste une chance !")
