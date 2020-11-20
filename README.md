@@ -4,7 +4,7 @@ Le projet s'appelle "Python Casino". Il s'agit d'un programme codé en python et
 
 ## Pre-réquis d'installation
 
-Liste des imports natif à python :
+**Liste des imports natif à python :**
 
 from os import path
 import os.path
@@ -13,7 +13,7 @@ import json
 from json.decoder import JSONDecodeError
 
 
-Liste des imports de packages crées pour le projet:
+**Liste des imports de packages crées pour le projet:**
 
 from rules import Rules 
 from check import Check 
@@ -58,13 +58,13 @@ Des axes d'améliorations avec une librairie tel que Pandas pour un affichage de
 
 Ce projet a ete realisé par des eleves des promo AW et CS 22.2 , dont voici la liste :
 
-Jean TALGORN-THOMAS AW
+**Jean TALGORN-THOMAS AW
 Benjamin PRADON AW
 Eliot DEMANGEL CS
-Nassim AKIF Aw
+Nassim AKIF AW
 Laetitia HAMDIS CS
 Marc NTUMBA CS
-Mamadou CISSOKHO CS
+Mamadou CISSOKHO CS**
 
 
 
