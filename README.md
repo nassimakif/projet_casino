@@ -52,7 +52,13 @@ Un premier livrable fonctionnel est disponible le 20/11/2020.
 
 ## Axes d'amélioration
 
-Des axes d'améliorations avec une librairie tel que Pandas pour un affichage de graphique en lien avec notre programme serait une amélioration possible. Egalement l'utilisation de Numpy pour l'aspect statistiques et enfin la possibilité d'intégrer le programme sur du Web avec Flask.
+Des axes d'améliorations avec une librairie tel que Pandas pour un affichage de graphique en lien avec notre programme serait une amélioration possible. Egalement l'utilisation de Numpy pour l'aspect statistiques et enfin la possibilité d'intégrer le programme sur du Web avec Flask. De plus, MongoDB pourrait être utilisé avec le fichier JSON. Pour éviter tous problèmes avec l'outil Git, il faudrait que nous utilisions différentes branches. 
+
+
+## Méthodologie et gestion de projet
+
+Pour ce projet, nous avons utilisé la méthodologie Kanban.
+
 
 ## Auteurs
 
@@ -65,7 +71,3 @@ Ce projet a ete realisé par des eleves des promo AW et CS 22.2 , dont voici la 
 <br/>Laetitia HAMDIS CS
 <br/>Marc NTUMBA CS
 <br/>Mamadou CISSOKHO CS**
-
-
-
-
