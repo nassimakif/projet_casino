@@ -1,3 +1,5 @@
+from check import Check
+
 class Level:
     def __init__(self, level):
         self.level = level
@@ -6,9 +8,9 @@ class Level:
     def permier_level(level):
         print("\n----1 - Level 1")
         print("----4 - Sortir")
-        level = int(input("Que voulez-vous faire : "))
+        level = Check.checkInt("Que voulez-vous faire : ")
         while level != 1 and level != 4: 
-            level = int(input("Réponse incorect, veuillez saisir le choix 1 ou 4 ! "))
+            level = Check.checkInt("Réponse incorect, veuillez saisir le choix 1 ou 4 ! ")
         return level
 
     # retourne le level (superieur) si le joueur gagne
@@ -18,9 +20,9 @@ class Level:
         print("\n----" + str(level) + " - Pour passer au level " + str(level))
         print("----4 - Sortir")
         levelprecedent = level
-        level = int(input("Que voulez-vous faire : "))
+        level = Check.checkInt("Que voulez-vous faire : ")
         while levelprecedent != level and level != 4 : 
-            level = int(input("Réponse incorect, veuillez saisir le choix " + str(levelprecedent) + " ou 4 ! "))
+            level = Check.checkInt("Réponse incorect, veuillez saisir le choix " + str(levelprecedent) + " ou 4 ! ")
         return level
 
     # retourne le level si le joueur perd
@@ -30,5 +32,5 @@ class Level:
             level = level - 1
         print("----" + str(level) + " - Pour recommencer au level " + str(level))
         print("----4 - Sortir")
-        level = int(input("Que voulez-vous faire : "))
+        level = Check.checkInt("Que voulez-vous faire : ")
         return level

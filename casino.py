@@ -35,7 +35,7 @@ while level < 4:
     else:
         level = Level.niveau_perdu(level)
         if level != 4 and argent == 0: 
-            argent = int(input("\nVous avez tout perdu. Combien voulez-vous remettre ? : "))
+            argent = Check.checkInt("\nVous avez tout perdu. Combien voulez-vous remettre ? : ")
     
     if level < 4:
         limiteMaxi = 0

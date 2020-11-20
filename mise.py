@@ -1,3 +1,5 @@
+from check import Check
+
 class Mise:
     def __init__(self, argent, level, nb_coup, mise, name_user):
         self.argent = argent
@@ -9,12 +11,12 @@ class Mise:
     # Retourn la mise
     def fonction_mise(argent, level):
         if level == 1:
-            mise = int(input("\nLe jeu commence, entrez votre mise : "))
+            mise = Check.checkInt("\nLe jeu commence, entrez votre mise : ")
         else:
-            mise = int(input("\nEntrez votre mise : "))
+            mise = Check.checkInt("\nEntrez votre mise : ")
         while mise < 1 or mise > argent:
             print("Erreur, votre mise est plus elevé que votre solde.")
-            mise = int(input("Entrer SVP un montant entre 1 et " + str(argent) + " € : "))
+            mise = Check.checkInt("Entrer SVP un montant entre 1 et " + str(argent) + " € : ")
         return mise
 
     # affiche le montant gagner après la partie
