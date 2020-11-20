@@ -1,36 +1,71 @@
-# projet_casino
-<br>
-<u>Obj pédagogiques </u> :
-<p>
-    Écrire un programme informatique d'une façon pythonique et tester son code en respectant un cahier des charges.<br>
-    Calculer, écrire et stocker d'une façon permanente des statistiques et les afficher avec des viz : tableau de bord, graphes, ... (sur les joueurs).<br>
-    Tracker le comportement des joueurs pour détecter leur stratégie. Un bon joueur applique la dichotomie (faite votre recherche).<br>
-    Transformer le script en un exécutable et/ou le mettre en ligne (avec une base de données). <br>
-    <u>Optionel </u> :
-    <br>
-    Réaliser le programme réciproque : on change les rôles : Python devine le nombre que vous avez choisi (obj : écrire un script avec une logique inverse).
-</p>
-<u>Livrables </u> :
-<br>
-<p>
-    Selon votre niveau en Python, réaliser le projet : sous la forme d'un script qui contient de simples instructions (procédurale) ; 2è version en <br>
-    utilisant des fonctions <br>
-    en orienté objet <br>
-    déclarer des classes <br>
-    ou encore sous la forme d'un package (que vs pouvous installer et importer) ? <br>
-    Peu importe la version, pensez à gérer les exceptions
-</p>
-<u>Rq </u> : <br>
-Utiliser des fonctions permet de simplifier les programmes et d’en faciliter la relecture.
-<br>
-<p>
-    Une fonction est censée faire qu'une seule chose à la fois.<br>
-    Par ex, écrire 1fonc qui vérifie l'encre, une 2è qui vérifie s'il y a 1bourage de papier, une 3è, etc.<br>
-    Si vous avez des blocs de code qui se repéte, il vaut mieux en faire 1fon dès le début du script pr l'appeler chaq fois dont vs avez besoin.<br>
-    Si les besoins du projet change, tu apporte des modif sur la fonc est mieux que d'apporter des modif sur le code de tt le projet.<br>
-</p>
-<u>Compétences visées</u> :
-<br>
-<p>
-    imbriquer des boucles while et for avec condition : if elif else, incrémentation, la méthode input, la fonction de conversion int, commentaire, exceptions : try except, les fichiers : file
-</p>
+## Titre du projet
+
+Le projet s'appelle "Python Casino". Il s'agit d'un programme codé en python et qui permet de simuler une réplique d'un jeu type casino directement via le terminal.
+
+## Pre-réquis d'installation
+
+Liste des imports natif a python :
+
+from os import path
+import os.path
+from inputimeout import inputimeout, TimeoutOccurred
+import json
+from json.decoder import JSONDecodeError
+
+
+Liste des imports de packages crées pour le projet:
+
+from rules import Rules 
+from check import Check 
+from level import Level 
+from stats import Stats 
+from mise import Mise
+
+
+## Démarrage du programme
+
+Pour lancer le programme casino.py, accédez au répertoire où se trouve le fichier casino.py. Ensuite tapez la commande: python casino.py
+
+## Regle du programme
+
+Le jeu comporte quatre levels. Lors de chaque level, Python tire un nombre : level 1 (entre 1 et 10),level2 (1 et 20), level3 (1 et 30). C'est à vous de deviner le nombre mystérieux avec 3 essais (en tout)lors du 1è level, 5 lors du 2è level et 7 essais lors du 3è level. Chaque essai ne durera pas plus
+de 10 secondes. En dépassant ce délai, vous perdez votre essai.
+Lorsque vous gagnez un level et/ou terminer une partie, Python fournit des statistiques (voir ci-dessous).
+Quand vous souhaitez quitter le jeu, Python mets en place un compteur jusqu'à 10 secondes pour valider votre décision.
+Au-delà, Python quitte le jeu.
+
+## Fichier contenu dans le projet
+
+Projet Casino.ipynb
+README.md
+casino.py
+check.py
+level.py
+mise.py
+rules.py
+stats.json
+stats.py
+
+## Livraison et déployement
+
+Un premier livrable fonctionelle est disponible le 20/11/2020. 
+
+## Axes d'amelioration
+
+Des axes d'ameliorations avec une librairie telque Pandas pour une affichage de graphique en liens avec notre programme egalement l'utilisation de Numpy pour l'aspect statistque et enfin la possibiliter d'intergrer le programme sur du Web avec Flask
+
+## Auteurs
+
+Ce projet a ete realisé par des eleves des promo AW et CS 22.2 , dont voici la liste :
+
+Jean TALGORN-THOMAS AW
+Benjamin PRADON AW
+Eliot DEMANGEL CS
+Nassim AKIF Aw
+Laetitia HAMDIS CS
+Marc NTUMBA CS
+Mamadou CISSOKHO CS
+
+
+
+
