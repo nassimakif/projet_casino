@@ -14,8 +14,7 @@ from mise import Mise
 #Saisie de début
 Stats.creation_stats()
 name_user = str(input("Je suis Python. Quel est votre pseudo ? "))
-argent = int(input("\nCombien voulez-vous mettre dans le jeu : "))
-print("\nHello " + name_user + ", vous avez " + str(argent) + " €, Très bien ! Installez vous SVP à la table de pari.\n\nJe vous expliquerai le principe du jeu ! ")
+argent = Check.checkInt("Combien voulez-vous mettre dans le jeu : ")
 level = 0
 nb_user = 0
 start = True

@@ -1,10 +1,11 @@
 from inputimeout import inputimeout, TimeoutOccurred
 
 class Check:
-    def __init__(self, nb_user, limiteMaxi, texte):
+    def __init__(self, nb_user, limiteMaxi, texte, txt):
         self.nb_user = nb_user
         self.limiteMaxi = limiteMaxi
         self.texte = texte
+        self.txt = txt
 
     # Vérifie la saisie de l'utilisateur en fonction du temps qu'il dispose pour répondre et de son choix
     def checkSaisiNombre(nb_user, limiteMaxi):
@@ -26,3 +27,15 @@ class Check:
         if nb_user != 0:
             nb_user = Check.checkSaisiNombre(int(nb_user), limiteMaxi)
         return int(nb_user)
+
+    # verification saisie utilisateur (int)
+    def checkInt(txt):
+        valeur = 0
+        bol = False
+        while bol:
+            try:
+                valeur = int(input("\n" + txt))
+                bol = False
+            except ValueError:
+                print("Ce n'est pas un entier!")
+        return valeur
