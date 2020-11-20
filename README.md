@@ -5,13 +5,13 @@ Le projet s'appelle "Python Casino". Il s'agit d'un programme codé en python et
 ## Pre-réquis d'installation
 
 **Liste des imports natif à python :**
-
-from os import path
+```
+from os import path 
 import os.path
 from inputimeout import inputimeout, TimeoutOccurred
 import json
 from json.decoder import JSONDecodeError
-
+```
 
 **Liste des imports de packages crées pour le projet:**
 
