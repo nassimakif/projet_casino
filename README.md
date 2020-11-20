@@ -59,12 +59,12 @@ Des axes d'améliorations avec une librairie tel que Pandas pour un affichage de
 Ce projet a ete realisé par des eleves des promo AW et CS 22.2 , dont voici la liste :
 
 **Jean TALGORN-THOMAS AW
-Benjamin PRADON AW
-Eliot DEMANGEL CS
-Nassim AKIF AW
-Laetitia HAMDIS CS
-Marc NTUMBA CS
-Mamadou CISSOKHO CS**
+<br/>Benjamin PRADON AW
+<br/>Eliot DEMANGEL CS
+<br/>Nassim AKIF AW
+<br/>Laetitia HAMDIS CS
+<br/>Marc NTUMBA CS
+<br/>Mamadou CISSOKHO CS**
 
 
 
