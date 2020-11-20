@@ -79,7 +79,7 @@ while level < 4:
             nb_coup += 1
             if nb_coup == nb_essai-1 and nb_user != nb_python:
                 print("\nIl vous reste une chance !")
-            if nb_user == 0:
+            if nb_coup == 0:
                 nb_user = "erreur"
                 break
             if nb_coup == nb_essai and nb_user != nb_python:

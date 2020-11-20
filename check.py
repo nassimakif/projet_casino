@@ -24,8 +24,8 @@ class Check:
             nb_user = inputimeout(prompt='\n(10 secondes pour répondre) \n Alors mon nombre est : ', timeout=10)
         except TimeoutOccurred:
             print("Vous n'avez pas répondu assez vite. Réssayer !")
-        if nb_user != 0:
-            nb_user = Check.checkSaisiNombre(int(nb_user), limiteMaxi)
+#        if nb_user != 0:
+#            nb_user = Check.checkSaisiNombre(int(nb_user), limiteMaxi)
         return int(nb_user)
 
     # verification saisie utilisateur (int)
