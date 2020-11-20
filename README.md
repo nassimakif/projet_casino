@@ -5,7 +5,7 @@ Le projet s'appelle "Python Casino". Il s'agit d'un programme codé en python et
 ## Pre-réquis d'installation
 
 **Liste des imports natif à python :**
-```
+```python
 from os import path 
 import os.path
 from inputimeout import inputimeout, TimeoutOccurred
