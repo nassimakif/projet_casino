@@ -38,6 +38,8 @@ Au-delà, Python quitte le jeu.
 
 ![Capture](/image/image.png)
 
+Un utilisateur joue avec Python.
+
 ## Fichiers contenus dans le projet
 
 Projet Casino.ipynb
